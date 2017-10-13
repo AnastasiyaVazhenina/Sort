@@ -14,3 +14,4 @@ script:
   - ( for file in $(find . -name "*.cpp"); do ./cpplint.py $file || exit; done );
   - mkdir build && cd build
   - cmake .. && make
+#  - ./executable
