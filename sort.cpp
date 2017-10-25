@@ -19,99 +19,99 @@ std::vector<T> generate_random_vector(std::size_t num, T min = -10, T max = 10)
 int main()
 {
     std::cout << "Enter size first vector" << std::endl;
-    size_t n1 = 0;
-    std::cin >> n1;
+    size_t length1 = 0;
+    std::cin >> length1;
 
-    std::vector<int> t = generate_random_vector<int>(n1, -10, 10);
-    for (int i = 0; i < t.size(); ++i)
+    std::vector<int> set1 = generate_random_vector<int>(length1, -10, 10);
+    for (int i = 0; i < set1.size(); ++i)
     {
-        std::cout << t[i] << " ";
+        std::cout << set1[i] << " ";
     }
     std::cout << std::endl;
     int c = 0;
-    for (int i = 0; i < t.size() - 1; ++i)
+    for (int i = 0; i < set1.size() - 1; ++i)
     {
-        for (int j = i + 1; j < t.size(); ++j)
+        for (int j = i + 1; j < set1.size(); ++j)
         {
-            if (t[i] > t[j])
+            if (set1[i] > set1[j])
             {
-                c = t[i];
-                t[i] = t[j];
-                t[j] = c;
+                c = set1[i];
+                set1[i] = set1[j];
+                set1[j] = c;
             }
         }
     }
-    for (int i = 0; i < t.size(); ++i)
+    for (int i = 0; i < set1.size(); ++i)
     {
-        std::cout << t[i] << " ";
+        std::cout << set1[i] << " ";
     }
     std::cout << std::endl;
     std::cout << "Enter size second vector" << std::endl;
-    size_t n2 = 0;
-    std::cin >> n2;
-    std::vector<int> a = generate_random_vector<int>(n2, -10, 10);
-    for (int i = 0; i < a.size(); ++i)
+    size_t length2 = 0;
+    std::cin >> length2;
+    std::vector<int> set2 = generate_random_vector<int>(length2, -10, 10);
+    for (int i = 0; i < set2.size(); ++i)
     {
-        std::cout << a[i] << " ";
+        std::cout << set2[i] << " ";
     }
     std::cout << std::endl;
     int b = 0;
-    for (int i = 0; i < a.size() - 1; ++i)
+    for (int i = 0; i < set2.size() - 1; ++i)
     {
-        for (int j = i + 1; j < a.size(); ++j)
+        for (int j = i + 1; j < set2.size(); ++j)
         {
-            if (a[i] > a[j])
+            if (set2[i] > set2[j])
             {
-                b = a[i];
-                a[i] = a[j];
-                a[j] = b;
+                b = set2[i];
+                set2[i] = set2[j];
+                set2[j] = b;
             }
         }
     }
-    for (int i = 0; i < a.size(); ++i)
+    for (int i = 0; i < set2.size(); ++i)
     {
-        std::cout << a[i] << " ";
+        std::cout << set2[i] << " ";
     }
     std::cout << std::endl;
-    int m = n1 + n2;
-    std::vector<int> g(m);
-    m = 0;
+    int maxlength = length1 + length2;
+    std::vector<int> finalArray(maxlength);
+    maxlength = 0;
     int i = 0;
     int j = 0;
-    while ((i < n1) && (j < n2))
+    while ((i < length1) && (j < length2))
     {
-        if (t[i] <= a[j])
+        if (set1[i] <= set2[j])
         {
-            g[m] = t[i];
+            finalArray[maxlength] = set1[i];
             ++i;
-            ++m;
+            ++maxlength;
         }
-        else if (t[i] > a[j])
+        else if (set1[i] > set2[j])
         {
-            g[m] = a[j];
+            finalArray[maxlength] = set2[j];
             ++j;
-            ++m;
+            ++maxlength;
         }
-        if (i == n1)
+        if (i == length1)
         {
-            for (int k = j; k < n2; ++k)
+            for (int k = j; k < length2; ++k)
             {
-                g[m] = t[k];
-                ++m;
+                finalArray[maxlength] = set1[k];
+                ++maxlength;
             }
         }
-        if (j == n2)
+        if (j == length2)
         {
-            for (int k = i; k < n1; ++k)
+            for (int k = i; k < length1; ++k)
             {
-                g[m] = a[k];
-                ++m;
+                finalArray[maxlength] = set2[k];
+                ++maxlength;
             }
         }
     }
-    for (int k = 0; k < n1 + n2; ++k)
+    for (int k = 0; k < length1 + length2; ++k)
     {
-        std::cout << g[k] << " ";
+        std::cout << finalArray[k] << " ";
     }
     return 0;
 }
