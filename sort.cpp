@@ -85,7 +85,8 @@ int main()
             g[m] = t[i];
             ++i;
             ++m;
-        } else if (t[i] > a[j])
+        }
+        else if (t[i] > a[j])
         {
             g[m] = a[j];
             ++j;
